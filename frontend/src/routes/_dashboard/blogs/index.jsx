@@ -142,13 +142,19 @@ export const Route = createFileRoute("/_dashboard/blogs/")({
               <Button type="submit">Search</Button>
             </form>
           </FormProvider>
-          <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
-            {blogs?.length === 0 ? (
-              <div>
-                <h1 className="text-3xl font-bold text-center">No Blogs</h1>
-              </div>
-            ) : (
-              blogs?.map((blog) => (
+          {blogs?.length === 0 ? (
+            <div className="flex flex-col items-center justify-center h-full">
+              <EmptyState
+                title="No Blogs Found"
+                description="Looks like you haven't created any blogs yet."
+                className="w-full flex flex-col items-center justify-center"
+                link="/blogs/create"
+                buttonText="Create Blog"
+              />
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
+              {blogs?.map((blog) => (
                 <Card className="w-full h-[250px] flex" key={blog.id}>
                   <div className="flex flex-grow flex-col p-4">
                     <div className="mt-2">
@@ -235,9 +241,9 @@ export const Route = createFileRoute("/_dashboard/blogs/")({
                     />
                   </div>
                 </Card>
-              ))
-            )}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
         <PaginationV1
           setPage={setCurrentPage}

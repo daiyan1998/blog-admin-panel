@@ -7,7 +7,7 @@ model Comment {
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
   blog            Blog      @relation(fields: [blogId], references: [id])
-  parentComment   Comment?  @relation("CommentReplies", fields: [parentCommentId], references: [id])
+  parentComment   Comment?  @relation("CommentReplies", fields: [parentCommentId], references: [id],onDelete: Cascade)
   replies         Comment[] @relation("CommentReplies")
   user            User      @relation(fields: [userId], references: [id])
 }

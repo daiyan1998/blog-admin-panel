@@ -32,6 +32,7 @@ import {
 import { useForm } from "react-hook-form";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { BASE_URL } from "@/lib/constants";
+import EmptyState from "@/components/EmptyState";
 
 export const Route = createFileRoute("/_dashboard/members/")({
   component: Members,
@@ -58,6 +59,13 @@ function Members() {
         <div className="text-2xl font-bold">Our Members</div>
         <DialogAddMember />
       </div>
+      {members?.length === 0 && (
+        <EmptyState
+          title="No Members Found"
+          description="Get started by creating a new member"
+          className="mt-10 h-[400px]"
+        />
+      )}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
         {members?.map((member) => (
           <Card

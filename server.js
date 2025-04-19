@@ -64,8 +64,13 @@ app.get("/api/v1", (req, res) => {
   res.send("Server is up and running");
 });
 
+app.use(express.static(path.join(__dirname, "frontend/dist")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+});
+
 app.listen(port, (error) => {
-  console.info(`App listening at http://localhost:${port}`);
+  console.info(`App listening at ${port}`);
 
   if (error) {
     console.error("Error occurred", error);
