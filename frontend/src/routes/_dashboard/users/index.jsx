@@ -182,7 +182,7 @@ const UpdateForm = ({ user }) => {
   });
   const updateUserHandler = async (data) => {
     axios
-      .patch(`http://localhost:8000/api/v1/users/${user.id}`, data, {
+      .patch(`/users/${user.id}`, data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

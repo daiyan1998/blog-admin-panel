@@ -82,15 +82,11 @@ function CreateBlog() {
         const formdata = new FormData();
         formdata.append("img", image.file);
 
-        const res = await api.post(
-          "http://localhost:8000/api/v1/upload",
-          formdata,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        );
+        const res = await api.post("/upload", formdata, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
         return {
           blobUrl: image.blobUrl,
           serverUrl: res.data.imageUrl,

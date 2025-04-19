@@ -37,7 +37,7 @@ export function SearchBlog() {
 
   const fetchBlogs = (keyword) => {
     api
-      .get(`http://localhost:8000/api/v1/blogs/search?keyword=${keyword}`, {
+      .get(`/blogs/search?keyword=${keyword}`, {
         withCredentials: true,
       })
       .then((res) => {

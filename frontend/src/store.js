@@ -18,11 +18,9 @@ const useAuthStore = create((set) => ({
 
   login: async (data, navigate) => {
     try {
-      const response = await api.post(
-        "http://localhost:8000/api/v1/users/login",
-        data,
-        { headers: { "Content-Type": "application/json" } }
-      );
+      const response = await api.post("/users/login", data, {
+        headers: { "Content-Type": "application/json" },
+      });
       console.log(response);
       const user = response.data.user;
       if (!user) {
@@ -43,7 +41,7 @@ const useAuthStore = create((set) => ({
 
   logout: async (navigate) => {
     try {
-      await api.post("http://localhost:8000/api/v1/users/logout");
+      await api.post("/users/logout");
       localStorage.removeItem("user");
       set({ user: null });
       toast.success("Logged out successfully", { duration: 5000 });

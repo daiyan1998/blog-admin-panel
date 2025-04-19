@@ -43,7 +43,7 @@ function Login() {
 
   const onSubmit = async (data) => {
     api
-      .post("http://localhost:8000/api/v1/users/login", data, {
+      .post("/users/login", data, {
         headers: {
           "Content-Type": "application/json",
         },

@@ -78,7 +78,7 @@ export const Route = createFileRoute("/_dashboard/users/create")({
 
     const createUserHandler = async (data) => {
       api
-        .post("http://localhost:8000/api/v1/users/register", data, {
+        .post("/users/register", data, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
